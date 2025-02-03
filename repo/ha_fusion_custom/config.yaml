@@ -1,0 +1,12 @@
+name: "HA Fusion Custom"
+version: "1.0.0"
+slug: "ha_fusion_custom"
+description: "Custom HA Fusion Dashboard"
+arch:
+  - amd64
+startup: application
+init: false
+ports:
+  8080/tcp: 8080
+options: {}
+schema: {}
