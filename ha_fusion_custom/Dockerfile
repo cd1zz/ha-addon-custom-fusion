@@ -1,27 +1,29 @@
-ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:14.3.3
-FROM ${BUILD_FROM}
-
-# Install node
-RUN \
-  apk add --no-cache \
-    nodejs \
-    npm
-
+# first stage, can't use alpine for building armv7
+FROM node:22 AS builder
 WORKDIR /app
 
-# Copy files to /app
+# copy all files
 COPY . .
 
-# Install, build and prune
+# install, build and prune
 RUN npm install --verbose && \
   npm run build && \
   npm prune --omit=dev
 
-# Set environment
-ENV PORT=8080 \
+# second stage
+FROM node:22-alpine
+WORKDIR /app
+
+# copy files to /app
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/server.js .
+COPY --from=builder /app/package.json .
+
+# set environment
+ENV PORT=5050 \
   NODE_ENV=production \
-  ADDON=true
+  ADDON=false
 
-EXPOSE 8080
-
+EXPOSE 5050
 CMD ["node", "server.js"]

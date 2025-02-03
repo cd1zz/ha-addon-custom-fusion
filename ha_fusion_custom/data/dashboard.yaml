@@ -1,0 +1,502 @@
+views:
+  - name: Overview
+    id: 7200309165575
+    sections:
+      - name: Pet Feeders
+        items:
+          - id: 2596253936077
+            type: button
+            entity_id: binary_sensor.rizzo_feeder_food_dispenser
+            name: Rizzo Manual Feed
+            template:
+              service: |
+                service: button.press
+                entity_id: button.rizzo_feeder_manual_feed
+                data: {}
+          - id: 3232514524572
+            type: button
+            entity_id: button.tucker_feeder_manual_feed
+            name: Tucker
+        id: 7181237957208
+      - type: horizontal-stack
+        sections:
+          - name: Locks
+            items:
+              - id: 3347043044139
+                type: button
+                entity_id: input_boolean.lock_doors_now
+              - id: 1040116495160
+                type: button
+                entity_id: lock.south_ext_garage_door_2
+                name: South Ext Garage
+              - id: 4698415829978
+                type: button
+                entity_id: lock.north_ext_garage_door
+                name: North Ext Garage
+              - id: 6981193192006
+                type: button
+                entity_id: lock.front_front
+                template:
+                  service: |-
+                    service: rest_command.lock_front_door
+                    data: {}
+                name: Front Door
+              - id: 7536988074822
+                type: button
+                entity_id: lock.back_patio_back_patio
+                name: Back Patio
+              - id: 2754994049137
+                type: button
+                entity_id: lock.office_office
+                name: Office Door
+            id: 5948767867884
+        id: 3425025551566
+      - name: Garage Doors
+        items:
+          - type: button
+            id: 2722218868500
+            entity_id: cover.large_garage_door
+          - type: button
+            id: 4352313730348
+            entity_id: cover.small_garage_door
+        id: 2311838559499
+        sections: []
+      - name: Water
+        items:
+          - id: 2982495138501
+            type: button
+            entity_id: switch.8124_smart_shutoff_shutoff_valve
+            name: Master Water Valve
+        id: 4721212856447
+      - name: Climate
+        items:
+          - type: button
+            id: 2995865588936
+            entity_id: climate.1st_fl_hallway
+            name: Thermostat
+          - type: button
+            id: 1269929689882
+            entity_id: sensor.1st_fl_hallway_temperature
+            name: Temp
+            color: ''
+        id: 8961025370462
+        sections: []
+      - name: 'Indoor '
+        items:
+          - type: button
+            id: 6997584318692
+            entity_id: switch.living_room_arc_lamp
+          - id: 8820908537398
+            type: button
+            entity_id: switch.gym_fan
+          - type: button
+            id: 2271769358497
+            entity_id: light.loft_dimmer
+          - id: 7842753634213
+            type: button
+            entity_id: binary_sensor.gymesp32_s3_gym_light_sensor
+            name: Gym LEDs
+            more_info: false
+          - id: 8160769469310
+            type: button
+            entity_id: switch.picture_light
+            name: Picture Light
+        id: 1362843901277
+        sections: []
+      - type: horizontal-stack
+        sections:
+          - name: Outdoor Lights
+            items:
+              - type: button
+                id: 5324525325006
+                entity_id: switch.front_door
+              - id: 6578382704994
+                type: button
+                entity_id: switch.garage_outdoor_lights
+              - type: button
+                id: 3899016859516
+                entity_id: light.outdoor_plug
+                name: Back Deck String Lights
+              - type: button
+                id: 4827637057952
+                entity_id: switch.office_porch
+              - type: button
+                id: 1268018490337
+                entity_id: switch.side_yard_garage_door
+            id: 2144466156706
+            sections: []
+        id: 3976061666206
+      - type: horizontal-stack
+        sections:
+          - name: Alarm
+            items:
+              - type: button
+                id: 3739150859507
+                entity_id: alarm_control_panel.qolsys_panel_8124
+                name: Alarm
+            id: 8889329417888
+            sections: []
+        id: 2955260535690
+      - name: Open Doors & Windows
+        items:
+          - id: 1765615759839
+            type: button
+            entity_id: binary_sensor.qolsys_panel_dog_door
+            name: Dog Door
+          - type: button
+            id: 1321395567329
+            entity_id: binary_sensor.yolink_gym
+            name:
+              - Gym
+          - type: button
+            id: 3821733218673
+            entity_id: binary_sensor.qolsys_panel_office_door_upper
+            name: Office Upper
+          - type: button
+            id: 3821733218674
+            entity_id: binary_sensor.qolsys_panel_office_door_lower
+            name:
+              - Office Lower
+          - type: button
+            id: 3821733218675
+            entity_id: binary_sensor.qolsys_panel_kitchen_oven_window
+            name:
+              - Kitchen Window
+          - type: button
+            id: 3821733218676
+            entity_id: binary_sensor.qolsys_panel_gwen_window_north
+            name:
+              - Gwen Window
+          - type: button
+            id: 3821733218677
+            entity_id: binary_sensor.qolsys_panel_will_window_south
+            name:
+              - Will Window
+          - type: button
+            id: 3821733218678
+            entity_id: binary_sensor.qolsys_panel_will_window_north
+            name:
+              - Will Window
+          - type: button
+            id: 3821733218679
+            entity_id: binary_sensor.qolsys_panel_office_window
+            name:
+              - Office Window
+          - type: button
+            id: 3821733218680
+            entity_id: binary_sensor.qolsys_panel_dining_room_window_n
+            name:
+              - Dining Window
+          - type: button
+            id: 3821733218681
+            entity_id: binary_sensor.qolsys_panel_kitchen_sink_window
+            name:
+              - Kitchen Window
+          - type: button
+            id: 3821733218682
+            entity_id: binary_sensor.qolsys_panel_kitchen_table_window
+            name:
+              - Kitchen Window
+          - type: button
+            id: 3821733218683
+            entity_id: binary_sensor.qolsys_panel_mud_room_window_n
+            name:
+              - Mud Rm Window
+          - type: button
+            id: 3821733218684
+            entity_id: binary_sensor.qolsys_panel_mud_room_window_s
+            name:
+              - Mud Rm Window
+          - type: button
+            id: 3821733218685
+            entity_id: binary_sensor.qolsys_panel_living_room_window_w1
+            name:
+              - Living Rm Window
+          - type: button
+            id: 3821733218686
+            entity_id: binary_sensor.qolsys_panel_living_room_window_w2
+            name:
+              - Living Rm Window
+          - type: button
+            id: 3821733218687
+            entity_id: binary_sensor.qolsys_panel_living_room_window_n1
+            name:
+              - Living Rm Window
+          - type: button
+            id: 3821733218688
+            entity_id: binary_sensor.qolsys_panel_living_room_window_n2
+            name:
+              - Living Rm Window
+          - type: button
+            id: 3821733218689
+            entity_id: binary_sensor.qolsys_panel_entry_window
+            name:
+              - Entry Window
+          - type: button
+            id: 3821733218690
+            entity_id: binary_sensor.qolsys_panel_gwen_window_e1
+            name:
+              - Gwen Window
+          - type: button
+            id: 3821733218691
+            entity_id: binary_sensor.qolsys_panel_gwen_window_n
+            name:
+              - Gwen Window
+          - type: button
+            id: 3821733218692
+            entity_id: binary_sensor.qolsys_panel_3rd_fl_guest_window
+            name:
+              - 3rd Guest Window
+          - type: button
+            id: 3821733218693
+            entity_id: binary_sensor.qolsys_panel_basement_pool_table_window
+            name:
+              - Basement Window
+          - type: button
+            id: 3821733218694
+            entity_id: binary_sensor.basement_guest_window
+            name:
+              - Basement Window
+        id: 1819240749716
+        sections: []
+  - name: Cameras
+    id: 4376856095798
+    sections:
+      - name: ''
+        items:
+          - id: 7622113715183
+            type: camera
+            entity_id: camera.ai_pro_high_resolution_channel_3
+            stream: true
+          - id: 9941918689045
+            type: camera
+            entity_id: camera.ai_pro_high_resolution_channel
+            stream: true
+          - id: 9368808239821
+            type: camera
+            entity_id: camera.alley_high_resolution_channel
+            stream: true
+          - id: 7974601873583
+            type: camera
+            entity_id: camera.ai_pro_high_resolution_channel_2
+            stream: true
+        id: 8528043422379
+  - name: Filters
+    id: 6964492577709
+    sections:
+      - name: Reset Filter Counters
+        items:
+          - id: 4798710087290
+            type: button
+            entity_id: input_datetime.big_blue_water_filter_last_replacement
+            template:
+              service: |-
+                service: input_datetime.set_datetime
+                data: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
+            name: Big Blue Filter Last Replacement
+        id: 5684948525615
+  - name: Battery Levels
+    id: 8403605683922
+    sections:
+      - name: Locks
+        items:
+          - id: 7656216086839
+            type: button
+            entity_id: sensor.front_front_battery
+            name: Front
+            template:
+              state: |2-
+                 {% set value = states('sensor.office_office_battery') %}
+                          {% if value == '1' %}
+                            LOW
+                          {% elif value == '2' %}
+                            MEDIUM
+                          {% elif value == '3' %}
+                            HIGH
+                          {% else %}
+                            UNKNOWN
+                          {% endif %}
+          - id: 7607968432221
+            type: button
+            entity_id: sensor.north_ext_garage_door_battery
+            name: North Ext Garage
+          - id: 2927756479323
+            type: button
+            entity_id: sensor.south_ext_garage_door_battery_2
+            name: South Ext Garage
+          - id: 3015943453249
+            type: button
+            entity_id: sensor.office_office_battery
+            name: Office
+            template:
+              state: |2-
+                 {% set value = states('sensor.office_office_battery') %}
+                          {% if value == '1' %}
+                            LOW
+                          {% elif value == '2' %}
+                            MEDIUM
+                          {% elif value == '3' %}
+                            HIGH
+                          {% else %}
+                            UNKNOWN
+                          {% endif %}
+          - id: 3647364450703
+            type: button
+            entity_id: sensor.back_patio_back_patio_battery
+            template:
+              state: |2-
+                 {% set value = states('sensor.back_patio_back_patio_battery') %}
+                          {% if value == '1' %}
+                            LOW
+                          {% elif value == '2' %}
+                            MEDIUM
+                          {% elif value == '3' %}
+                            HIGH
+                          {% else %}
+                            UNKNOWN
+                          {% endif %}
+            name: Back Patio
+        id: 7731893984276
+      - name: Moen Flo Sensors
+        items:
+          - id: 6416178113665
+            type: button
+            entity_id: sensor.master_bath_battery
+            name: Master Bath
+          - id: 6176609770732
+            type: button
+            entity_id: sensor.loft_bathroom_battery
+            name: Loft Bathroom
+          - id: 4548756695503
+            type: button
+            entity_id: sensor.laundry_sink_battery
+            name: Laundry Sink
+          - id: 2271783149342
+            type: button
+            entity_id: sensor.kids_sink_battery
+            name: Kids Bath Sink
+          - id: 8764810172958
+            type: button
+            entity_id: sensor.basement_sump_pump_battery
+            name: Basement Sump Pump
+          - id: 7821315019606
+            type: button
+            entity_id: sensor.basement_drain_battery
+            name: Basement Drain
+          - id: 2608140560684
+            type: button
+            entity_id: sensor.dishwasher_battery
+            name: Dishwasher
+          - id: 9029601957991
+            type: button
+            entity_id: sensor.kitchen_sink_battery
+            name: Kitchen Sink
+          - id: 4984654488274
+            type: button
+            entity_id: sensor.washing_machine_battery
+            name: Washing Machine
+          - id: 6946998455592
+            type: button
+            entity_id: sensor.kids_toilet_battery
+            name: Kids Toilet
+        id: 9093262967417
+sidebar:
+  - id: 6022945203307
+    type: notifications
+  - type: time
+    id: 3794835715836
+    hour12: true
+    seconds: false
+  - id: 3141105437380
+    type: date
+    short_day: false
+    layout: horizontal
+  - id: 2291705980795
+    type: divider
+  - type: weather
+    id: 6610151556295
+    entity_id: weather.home
+    weather_sensor: sensor.openweathermap_feels_like_temperature
+    icon_pack: meteocons
+    extra_sensor: sensor.openweathermap_forecast_precipitation_probability
+    show_apparent: true
+    sensor: sensor.openweathermap_wind_speed
+  - id: 7460291273924
+    type: weather_forecast
+    entity_id: weather.forecast_home_2
+  - type: divider
+    id: 3959815734079
+  - id: 5387747075829
+    type: template
+    icon: mdi:trash-can
+    icon_size: 48
+    template: >
+
+      {{ states('sensor.next_garbage_date') | as_timestamp |
+      timestamp_custom('%B %d, %Y') }}
+
+      {% set pickup_types = states('sensor.next_garbage_pickup_types').split(',
+      ') %}
+
+      {{ pickup_types | map('capitalize') | join(' * ') }}
+  - id: 4957103531993
+    type: divider
+  - id: 4615163308214
+    type: bar
+    entity_id: sensor.tucker_feeder_today_s_feeding_times
+    name: Tucker Meals
+    math: (x/2) * 100
+  - id: 1961921615222
+    type: bar
+    entity_id: sensor.rizzo_feeder_today_s_feeding_times
+    math: (x/2) * 100
+    name: Rizzo Meals
+  - type: divider
+    id: 7185367912981
+  - type: sensor
+    id: 5514453438174
+    entity_id: sensor.tucker_medicine_reminder
+    prefix: 'Tucker''s Medicine -> '
+  - type: radial
+    id: 4666185264941
+    entity_id: sensor.animalwaterloadcell_animal_water_fill_percentage
+    name: Water Level
+  - id: 5900319425502
+    type: divider
+  - id: 4611782800384
+    type: template
+    icon: mdi:pool-thermometer
+    icon_size: 36
+    template: |2-
+        {% set temp = states('sensor.temperature_sensor_temperature')|float %}
+        <div style="text-align: left;">
+          <div style="font-size: 24px; color: {% if temp < 95 %}red{% elif temp <= 99 %}yellow{% else %}green{% endif %};">Vail: {{ temp }}°
+          </div>
+        </div>
+  - id: 2590538502369
+    type: divider
+  - id: 4109348810756
+    type: template
+    icon: mdi:water-circle
+    icon_size: 36
+    template: |2
+        {% set last_change = as_timestamp(states('input_datetime.big_blue_water_filter_last_replacement')) %}
+        {% set six_months = 182 * 86400 %}
+        {% set next_change = last_change + six_months %}
+        {% set days_remaining = ((next_change - as_timestamp(now())) / 86400) | round(0) %}
+          <div style="font-size: 24px; color: {% if days_remaining < 95 %}red{% elif days_remaining <= 99 %}yellow{% else %}green{% endif %};">Water Filter Days Remain:
+          {{ days_remaining }} 
+          </div>
+  - id: 6610654788278
+    type: divider
+  - id: 1926680999210
+    type: graph
+    entity_id: sensor.xcel_gas_usage_2
+    period: day
+    name: Gas Usage Today
+  - type: divider
+    id: 2076167832540
+theme: muted
+hide_views: false
+hide_sidebar: false
+sidebarWidth: 516
