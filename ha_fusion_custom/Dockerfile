@@ -1,29 +1,21 @@
-# first stage, can't use alpine for building armv7
-FROM node:22 AS builder
+ARG BUILD_FROM=ghcr.io/hassio-addons/base/amd64:14.3.3
+FROM ${BUILD_FROM}
+
+RUN apk add --no-cache nodejs npm
+
 WORKDIR /app
 
-# copy all files
+# Copy package.json / lock files first
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the app
 COPY . .
 
-# install, build and prune
-RUN npm install --verbose && \
-  npm run build && \
-  npm prune --omit=dev
+# Build & prune
+RUN npm run build && npm prune --omit=dev
 
-# second stage
-FROM node:22-alpine
-WORKDIR /app
-
-# copy files to /app
-COPY --from=builder /app/build ./build
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/server.js .
-COPY --from=builder /app/package.json .
-
-# set environment
-ENV PORT=5050 \
-  NODE_ENV=production \
-  ADDON=false
-
-EXPOSE 5050
-CMD ["node", "server.js"]
+# Use correct start command
+CMD ["npm", "run", "serve"]
